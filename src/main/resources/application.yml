@@ -1,0 +1,94 @@
+server:
+    port: 8001
+transaction:
+    rollback-on-commit-failure: true
+user:
+    order:
+         queue:
+            name: local.user.order.queue
+user:
+    order:
+         exchange:
+            name: local.user.order.exchange
+user:
+    order:
+         routing:
+            key:
+               name: local.user.order.routing.key
+mybatis:
+    typeAliasesPackage: com.example.demo.*.domain
+    mapper-locations: classpath*:mybatis/mapper/*.xml
+    config-location: classpath:mybatis/config/mybatis-config.xml
+    # org.apache.ibatis.logging.log4j.Log4jImpl:这个不打印查询结果
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+spring:
+    application:
+        name: test
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/clouddo?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+    redis:
+        database: 0
+        host: 127.0.0.1
+        port: 6379
+        # 密码 没有则可以不填
+        password: 123456
+        # 如果使用的jedis 则将lettuce改成jedis即可
+        lettuce:pool:
+            # 最大活跃链接数 默认8
+            max-active: 8
+            # 最大空闲连接数 默认8
+            max-idle: 8
+            # 最小空闲连接数 默认0
+            min-idle: 0
+        timeout: 10000
+    rabbitmq:
+        host: 127.0.0.1
+        port: 5672
+        username: guest
+        password: guest
+        listener:
+            #并发消费者的初始化值
+            concurrency: 10
+            #并发消费者的最大值
+            max-concurrency: 20
+            #每次监听时可拉取处理的消息数量
+            prefetch: 5
+    #邮箱配置
+    mail:
+        host: smtp.qq.com
+        username: 908667158@qq.com
+        #QQ邮箱的授权码
+        password: qhsqwycamppdbbbc
+        default-encoding: UTF-8
+        protocol: smtp
+        needAuth: true
+        sslClass: javax.net.ssl.SSLSocketFactory
+        properties:
+          mail:
+            smtp:
+              auth: true
+              starttls:
+                enable: true
+                required: true
+    freemarker:
+        content-type: text/html
+        #后缀名
+        suffix: .ftl
+        template-loader-path: classpath:/templates
+        charset: UTF-8
+        check-template-location: true
+user:
+    message: queueOne
+#设置一个邮件发送人
+lance:
+    mail:
+         sender: 908667158@qq.com
+
+
+
+
+
+
