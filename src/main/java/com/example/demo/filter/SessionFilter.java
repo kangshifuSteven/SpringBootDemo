@@ -16,7 +16,6 @@ public class SessionFilter implements Filter{
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("过了");
         filterChain.doFilter(servletRequest,servletResponse);
     }
 
