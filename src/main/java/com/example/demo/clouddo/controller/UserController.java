@@ -1,5 +1,6 @@
 package com.example.demo.clouddo.controller;
 
+import com.example.demo.annotation.MonitorLog;
 import com.example.demo.clouddo.domain.UserDO;
 import com.example.demo.clouddo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class UserController {
 
     @RequestMapping("user/{id}")
     @ResponseBody
+    @MonitorLog(value = "测试啊",name = "不知道大撒撒")
     public UserDO getUser(@PathVariable Long id){
         return userService.getUserDo(id);
     }
